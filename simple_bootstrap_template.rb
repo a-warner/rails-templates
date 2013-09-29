@@ -1,3 +1,4 @@
+gem "twitter-bootstrap-rails"
 gem 'decent_exposure'
 gem 'haml'
 gem 'pg'
@@ -9,10 +10,6 @@ gem_group :test, :development do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'rspec'
-end
-
-gem_group :assets do
-  gem "twitter-bootstrap-rails"
 end
 
 gem_group :test do
@@ -33,7 +30,8 @@ end
 
 with_rvm 'gem install bundler'
 with_rvm 'bundle install'
-new_file ".rvmrc", "rvm use --create #{gemset}"
+new_file '.ruby-gemset', app_name
+new_file '.ruby-version', ruby_version
 
 inside app_name do
   with_rvm 'rails generate bootstrap:install static'
