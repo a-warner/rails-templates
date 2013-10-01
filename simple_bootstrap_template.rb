@@ -1,6 +1,7 @@
 gem "twitter-bootstrap-rails"
 gem 'decent_exposure'
 gem 'haml'
+gem 'haml-rails'
 gem 'pg'
 gem 'pry'
 
