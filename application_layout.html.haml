@@ -27,7 +27,7 @@
                   = msg
                   %br
               - else
-                = msg
+                = flash[key]
               - flash.delete(key)
           = yield
   = yield(:page_javascript) if content_for? :page_javascript
