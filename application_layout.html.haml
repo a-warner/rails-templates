@@ -11,13 +11,14 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container
-          %a.brand{href: '/'}= application_name
+    %header
+      %nav.navbar.navbar-default.navbar-fixed-top{role: 'navigation'}
+        .container-fluid
+          .navbar-header
+            %a.navbar-brand{href: '/'}= application_name
     .container-fluid
-      .row-fluid
-        .span8.offset3
+      .row
+        .col-md-9.col-md-offset-1{role: 'main'}
           - flash.keys.each do |key|
             .alert{ class: "alert-#{key}" }
               %a.close{ href: '#', "data-dismiss" => "alert" } x

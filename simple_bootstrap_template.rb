@@ -81,8 +81,8 @@ new_file 'app/views/static/index.html.haml', <<-INDEX
 INDEX
 
 new_file 'app/assets/stylesheets/global.sass', <<-GLOBAL_SASS
-.container-fluid
-  margin-top: 50px
+body
+  padding-top: 70px
 GLOBAL_SASS
 
 run "rm README.rdoc"
