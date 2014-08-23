@@ -1,4 +1,6 @@
 #!/bin/sh
+set -e
+
 if [ -e $2 ]; then
   TEMPLATE=simple_bootstrap_template.rb
 else
