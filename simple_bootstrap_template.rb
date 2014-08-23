@@ -12,6 +12,7 @@ end
 
 run "rm Gemfile"
 new_file "Gemfile", <<-GEMFILE
+ruby '#{RbConfig::CONFIG['RUBY_PROGRAM_VERSION']}'
 source 'https://rubygems.org'
 
 gem "decent_exposure"
@@ -22,11 +23,11 @@ gem "pg"
 gem "pry"
 gem "pry-rails"
 gem "twitter-bootstrap-rails"
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
-gem 'rails'
-gem 'sass-rails', '~> 4.0.0'
+gem 'rails', '~> #{`rails -v`.split(' ').last}'
+gem 'sass-rails'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
