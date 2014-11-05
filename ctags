@@ -1,0 +1,3 @@
+#!/bin/sh
+rm -f .git/tags
+ctags --tag-relative -f .git/tags --exclude=.git --exclude=db --exclude=public/uploads --exclude=vendor --exclude=tmp --languages=-javascript,html,sql -R .
