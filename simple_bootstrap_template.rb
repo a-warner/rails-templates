@@ -29,7 +29,7 @@ gem "twitter-bootstrap-rails"
 gem 'coffee-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
-gem 'rails', '~> #{`rails -v`.split(' ').last}'
+gem 'rails', '~> #{Rails.version}'
 gem 'sass-rails'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
