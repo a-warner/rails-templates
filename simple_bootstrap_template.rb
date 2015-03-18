@@ -86,6 +86,8 @@ if configure_user_auth
   insert_into_file "config/environments/development.rb", "  config.action_mailer.default_url_options = { host: '#{app_name}.dev' }\n", :after => "Rails.application.configure do\n"
 end
 
+insert_into_file 'app/controllers/application_controller.rb', "  decent_configuration do\n    strategy DecentExposure::StrongParametersStrategy\n  end\n", :after => "class ApplicationController < ActionController::Base\n"
+
 remove_file 'app/views/layouts/application.html.erb'
 new_file 'app/views/layouts/application.html.haml', ERB.new(File.read(File.expand_path('../application_layout.html.haml.erb', __FILE__))).result(binding)
 
