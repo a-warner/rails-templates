@@ -1,11 +1,6 @@
-ruby_version = `rvm current`.sub("\n",'')
-run "rvm gemset create #{app_name}"
+ruby_version = `rbenv version`.split(' ', 2).first
 gemset = "#{ruby_version}@#{app_name}"
 app_port = (rand * 10_000 + 1_000).to_i
-
-class_eval do
-  define_method(:with_rvm) { |cmd| run "rvm #{gemset} do #{cmd}" }
-end
 
 configure_user_auth = ENV['USER_AUTH']
 
@@ -46,8 +41,8 @@ group :test do
 end
 GEMFILE
 
-with_rvm 'gem install bundler'
-with_rvm 'bundle install'
+run 'gem install bundler'
+run 'bundle install'
 new_file '.ruby-gemset', app_name
 new_file '.ruby-version', ruby_version
 
@@ -67,18 +62,18 @@ test:
 DATABASE_YAML
 
 inside app_name do
-  with_rvm 'rails generate bootstrap:install static'
-  with_rvm 'rails generate controller static'
-  with_rvm 'rails generate rspec:install'
-  with_rvm 'rake db:create db:migrate'
-  with_rvm 'gem install gem-ctags'
-  with_rvm 'gem ctags'
+  run 'rails generate bootstrap:install static'
+  run 'rails generate controller static'
+  run 'rails generate rspec:install'
+  run 'rake db:create db:migrate'
+  run 'gem install gem-ctags'
+  run 'gem ctags'
 
   if configure_user_auth
-    with_rvm 'rails generate devise:install'
-    with_rvm 'rails generate devise user'
-    with_rvm 'rails generate devise:views'
-    with_rvm 'rake db:migrate'
+    run 'rails generate devise:install'
+    run 'rails generate devise user'
+    run 'rails generate devise:views'
+    run 'rake db:migrate'
   end
 end
 
